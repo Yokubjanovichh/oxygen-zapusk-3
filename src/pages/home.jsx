@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { PatternFormat } from "react-number-format";
 // import { useNavigate } from "react-router-dom";
-import mainBg2 from "../assets/img/mainBg-2.png";
+import mainBg2 from "../assets/img/mainBg-2.webp";
 import styles from "./home.module.css";
 
 export default function Home() {
