@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { PatternFormat } from "react-number-format";
-// import { useNavigate } from "react-router-dom";
 import mainBg2 from "../assets/img/mainBg-2.webp";
-import camIcon from "../assets/icons/cam-icon.svg";
 import titile from "../assets/img/titile.webp";
+import camIcon from "../assets/icons/cam-icon.svg";
+import modalStep from "../assets/icons/modalStep.svg";
+import giftIcon from "../assets/icons/gift.svg";
 import styles from "./home.module.css";
 
 export default function Home() {
@@ -14,27 +16,27 @@ export default function Home() {
   const [timeLeft, setTimeLeft] = useState(30);
   const totalTime = 30;
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setIsLoading(true);
-  //   const url =
-  //     "https://script.google.com/macros/s/AKfycbzmesk4Jfiu1K_ZOCJkvzFuJp5ICBSA0OrSKhlU6UyvWxUG7AM9zNH1aYHSPAMGqWE6/exec";
-  //   fetch(url, {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  //     body: `Name=${name}&Email=${number}`,
-  //   })
-  //     .then((res) => res.text())
-  //     .then((data) => {
-  //       setIsLoading(false);
-  //       navigate("/last");
-  //       setNumber("");
-  //       setName("");
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    const url =
+      "https://script.google.com/macros/s/AKfycby-YD2ueEEC8rbzLLHS5x3zUhEg1MIM8jzEjFbOYBeAztQbrklaps5wyDpZCohxkK3j6A/exec";
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `Name=${encodeURIComponent(name)}&Email=${number}`,
+    })
+      .then((res) => res.text())
+      .then((data) => {
+        setIsLoading(false);
+        navigate("/last");
+        setNumber("");
+        setName("");
+      })
+      .catch((error) => console.log(error));
+  };
 
   useEffect(() => {
     if (timeLeft === 0) return;
@@ -104,7 +106,7 @@ export default function Home() {
             className={styles.modalContent}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* <img src={modalStep} alt="modalStep" className={styles.modalStep} /> */}
+            <img src={modalStep} alt="modalStep" className={styles.modalStep} />
             <p className={styles.information}>ma'lumotlaringizni qoldiring!</p>
             <div className={styles.form}>
               <div className={styles.inputs}>
@@ -132,12 +134,16 @@ export default function Home() {
               <div className={styles.submit}>
                 <button
                   className={number && name ? styles.activeButton : ""}
-                  disabled={!number || !name}
-                  // onClick={handleSubmit}
+                  disabled={!number || !name || isLoading}
+                  onClick={handleSubmit}
                 >
                   Davom etish
                 </button>
                 {isLoading && <div className={styles.loader}></div>}
+              </div>
+              <div className={styles.gift}>
+                <img src={giftIcon} alt="giftIcon" />
+                <p>Uy yutib olish imkoniyati</p>
               </div>
             </div>
           </div>
