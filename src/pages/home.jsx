@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { PatternFormat } from "react-number-format";
 // import { useNavigate } from "react-router-dom";
 import mainBg2 from "../assets/img/mainBg-2.webp";
+import camIcon from "../assets/icons/cam-icon.svg";
+import titile from "../assets/img/titile.webp";
 import styles from "./home.module.css";
 
 export default function Home() {
@@ -35,7 +37,17 @@ export default function Home() {
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.wrapper}>
-        <div className={styles.navbar}></div>
+        <div className={styles.navbar}>
+          <div className={styles.navbarHeader}>
+            <img src={camIcon} alt="camIcon" />
+            <p>Online • 20:00 • 22-Avgust</p>
+          </div>
+          <img className={styles.navbarTitle} src={titile} alt="titile" />
+          <button className={styles.navbarButton}>qatnashish</button>
+          <p className={styles.navbarDesc}>
+            22-avgust, soat 20:00 da Telegram kanalda jonli efir, qolib ketmang
+          </p>
+        </div>
         <div className={styles.buildings}>
           <img className={styles.bodyMainBG} src={mainBg2} alt="mainBg2" />
           <div className={styles.footer}></div>
