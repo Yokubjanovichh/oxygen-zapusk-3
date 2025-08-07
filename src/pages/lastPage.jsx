@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Loader from "../components/loader";
 import camIcon from "../assets/icons/cam-icon.svg";
 import lastPageStepImg from "../assets/icons/lastStepIcon.svg";
 import tgChannel from "../assets/icons/tgChannel.svg";
@@ -6,7 +7,33 @@ import lastPageText from "../assets/img/lastPageText.webp";
 import dateOfConversation from "../assets/img/date.webp";
 import styles from "./last.module.css";
 
-export default function lastPage() {
+export default function LastPage() {
+  const [pageLoaded, setPageLoaded] = useState(false);
+
+  useEffect(() => {
+    const imageList = [
+      camIcon,
+      lastPageStepImg,
+      tgChannel,
+      lastPageText,
+      dateOfConversation,
+    ];
+
+    let loadedCount = 0;
+    imageList.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === imageList.length) {
+          setPageLoaded(true);
+        }
+      };
+    });
+  }, []);
+
+  if (!pageLoaded) return <Loader />;
+
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.wrapper}>

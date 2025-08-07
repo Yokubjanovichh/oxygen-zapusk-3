@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { PatternFormat } from "react-number-format";
+import Loader from "../components/loader";
 import mainBg2 from "../assets/img/mainBg-2.webp";
 import titile from "../assets/img/titile.webp";
 import camIcon from "../assets/icons/cam-icon.svg";
@@ -14,6 +15,8 @@ export default function Home() {
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [timeLeft, setTimeLeft] = useState(30);
+  const [pageLoaded, setPageLoaded] = useState(false);
+
   const totalTime = 30;
 
   const navigate = useNavigate();
@@ -55,6 +58,16 @@ export default function Home() {
   };
 
   const progressWidth = Math.max((timeLeft / totalTime) * 179, 50);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = mainBg2;
+    img.onload = () => {
+      setPageLoaded(true);
+    };
+  }, []);
+
+  if (!pageLoaded) return <Loader />;
 
   return (
     <div className={styles.mainWrapper}>
