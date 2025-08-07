@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { PatternFormat } from "react-number-format";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import mainBg2 from "../assets/img/mainBg-2.png";
 import styles from "./home.module.css";
 
@@ -10,27 +10,27 @@ export default function Home() {
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    const url =
-      "https://script.google.com/macros/s/AKfycbzmesk4Jfiu1K_ZOCJkvzFuJp5ICBSA0OrSKhlU6UyvWxUG7AM9zNH1aYHSPAMGqWE6/exec";
-    fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `Name=${name}&Email=${number}`,
-    })
-      .then((res) => res.text())
-      .then((data) => {
-        setIsLoading(false);
-        navigate("/last");
-        setNumber("");
-        setName("");
-      })
-      .catch((error) => console.log(error));
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setIsLoading(true);
+  //   const url =
+  //     "https://script.google.com/macros/s/AKfycbzmesk4Jfiu1K_ZOCJkvzFuJp5ICBSA0OrSKhlU6UyvWxUG7AM9zNH1aYHSPAMGqWE6/exec";
+  //   fetch(url, {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //     body: `Name=${name}&Email=${number}`,
+  //   })
+  //     .then((res) => res.text())
+  //     .then((data) => {
+  //       setIsLoading(false);
+  //       navigate("/last");
+  //       setNumber("");
+  //       setName("");
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
 
   return (
     <div className={styles.mainWrapper}>
@@ -77,13 +77,13 @@ export default function Home() {
                 />
               </div>
               <div className={styles.submit}>
-                <button
+                {/* <button
                   className={number && name ? styles.activeButton : ""}
                   disabled={!number || !name}
                   onClick={handleSubmit}
                 >
                   Davom etish
-                </button>
+                </button> */}
                 {isLoading && <div className={styles.loader}></div>}
               </div>
             </div>
