@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { PatternFormat } from "react-number-format";
 // import { useNavigate } from "react-router-dom";
 import mainBg2 from "../assets/img/mainBg-2.webp";
@@ -11,6 +11,8 @@ export default function Home() {
   const [number, setNumber] = useState("");
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(30);
+  const totalTime = 30;
 
   // const navigate = useNavigate();
 
@@ -34,6 +36,24 @@ export default function Home() {
   //     .catch((error) => console.log(error));
   // };
 
+  useEffect(() => {
+    if (timeLeft === 0) return;
+
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [timeLeft]);
+
+  const formatTime = (sec) => {
+    const minutes = String(Math.floor(sec / 60)).padStart(2, "0");
+    const seconds = String(sec % 60).padStart(2, "0");
+    return `${minutes}:${seconds}`;
+  };
+
+  const progressWidth = Math.max((timeLeft / totalTime) * 179, 50);
+
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.wrapper}>
@@ -43,14 +63,35 @@ export default function Home() {
             <p>Online • 20:00 • 22-Avgust</p>
           </div>
           <img className={styles.navbarTitle} src={titile} alt="titile" />
-          <button className={styles.navbarButton}>qatnashish</button>
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className={styles.navbarButton}
+          >
+            qatnashish
+          </button>
           <p className={styles.navbarDesc}>
             22-avgust, soat 20:00 da Telegram kanalda jonli efir, qolib ketmang
           </p>
         </div>
         <div className={styles.buildings}>
           <img className={styles.bodyMainBG} src={mainBg2} alt="mainBg2" />
-          <div className={styles.footer}></div>
+          <div className={styles.footer}>
+            <p>
+              Eng asosiysi, chegirma narxlar faqat online taqdimotda
+              qatnashganlarga beriladi!
+            </p>
+
+            <div className={styles.timer}>
+              <div
+                className={styles.interval}
+                style={{
+                  width: `${progressWidth}px`,
+                  transition: "width 1s linear",
+                }}
+              ></div>
+              <p className={styles.time}>{formatTime(timeLeft)}</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -89,13 +130,13 @@ export default function Home() {
                 />
               </div>
               <div className={styles.submit}>
-                {/* <button
+                <button
                   className={number && name ? styles.activeButton : ""}
                   disabled={!number || !name}
-                  onClick={handleSubmit}
+                  // onClick={handleSubmit}
                 >
                   Davom etish
-                </button> */}
+                </button>
                 {isLoading && <div className={styles.loader}></div>}
               </div>
             </div>

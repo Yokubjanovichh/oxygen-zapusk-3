@@ -138,6 +138,45 @@ html {
   position: absolute;
   z-index: 12;
   bottom: 0;
+  padding-top: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer p {
+  width: 30.4rem;
+  font-family: "TT Firs Neue";
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 1.5rem;
+  line-height: 1.7rem;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+.timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.interval {
+  width: 17.9rem;
+  height: 0.6rem;
+  border-radius: 5rem;
+  background: linear-gradient(92.86deg, #c9e331 -6.54%, #54a31f 96.73%);
+}
+
+.time {
+  font-family: "TT Firs Neue";
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 2rem;
+  line-height: 100%;
+  letter-spacing: 0%;
 }
 
 .modalOverlay {
