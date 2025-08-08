@@ -24,21 +24,25 @@ export default function Home() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
+
+    // Telefon raqamni tozalash (faqat raqamlar qoldiriladi)
+    const cleanedNumber = number.replace(/\D/g, "");
+
+    // Tez feedback
+    navigate("/last");
+    setNumber("");
+    setName("");
+    setIsLoading(false);
+
+    // Sheets’ga ma'lumotni sendBeacon bilan yuborish
     const url =
       "https://script.google.com/macros/s/AKfycby-YD2ueEEC8rbzLLHS5x3zUhEg1MIM8jzEjFbOYBeAztQbrklaps5wyDpZCohxkK3j6A/exec";
-    fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `Name=${encodeURIComponent(name)}&Email=${number}`,
-    })
-      .then((res) => res.text())
-      .then((data) => {
-        setIsLoading(false);
-        navigate("/last");
-        setNumber("");
-        setName("");
-      })
-      .catch((error) => console.log(error));
+
+    const formData = new URLSearchParams();
+    formData.append("Name", name);
+    formData.append("Email", cleanedNumber); // tozalangan raqam yuboriladi
+
+    navigator.sendBeacon(url, formData);
   };
 
   useEffect(() => {
