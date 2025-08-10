@@ -49,7 +49,9 @@ export default function LastPage() {
         <div className={styles.lastButtons}>
           <button
             className={styles.tgChannel}
-            onClick={() => (window.location.href = "https://t.me/your_channel")}
+            onClick={() =>
+              (window.location.href = "https://t.me/+mkbOQ1uzS343Yjky")
+            }
           >
             <img src={tgChannel} alt="tgChannel" />
           </button>
