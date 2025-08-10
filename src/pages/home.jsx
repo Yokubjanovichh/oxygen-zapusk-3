@@ -64,11 +64,19 @@ export default function Home() {
   const progressWidth = Math.max((timeLeft / totalTime) * 179, 50);
 
   useEffect(() => {
-    const img = new Image();
-    img.src = mainBg2;
-    img.onload = () => {
-      setPageLoaded(true);
-    };
+    const imageList = [mainBg2, titile];
+
+    let loadedCount = 0;
+    imageList.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === imageList.length) {
+          setPageLoaded(true);
+        }
+      };
+    });
   }, []);
 
   if (!pageLoaded) return <Loader />;
