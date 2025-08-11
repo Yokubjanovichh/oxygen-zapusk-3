@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { PatternFormat } from "react-number-format";
 import Loader from "../components/loader";
 import mainBg2 from "../assets/img/mainBg-2.webp";
-import titile from "../assets/img/titile.webp";
 import camIcon from "../assets/icons/cam-icon.svg";
 import modalStep from "../assets/icons/modalStep.svg";
 import giftIcon from "../assets/icons/gift.svg";
@@ -64,7 +63,7 @@ export default function Home() {
   const progressWidth = Math.max((timeLeft / totalTime) * 179, 50);
 
   useEffect(() => {
-    const imageList = [mainBg2, titile];
+    const imageList = [mainBg2];
 
     let loadedCount = 0;
     imageList.forEach((src) => {
@@ -92,7 +91,6 @@ export default function Home() {
           <h3 className={styles.navbarTitle}>
             Chegirmali narxlarda xonadon sotib olish uchun
           </h3>
-          {/* <img className={styles.navbarTitle} src={titile} alt="titile" /> */}
           <button
             onClick={() => setIsModalOpen(true)}
             className={styles.navbarButton}
