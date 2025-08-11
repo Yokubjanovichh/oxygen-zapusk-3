@@ -58,13 +58,20 @@ html {
 }
 
 .navbarTitle {
-  width: 34.2rem;
+  font-family: "TT Firs Neue";
+  font-weight: 500;
+  font-size: 2.5rem;
+  line-height: 2.8rem;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  text-align: center;
+  color: #000000;
   margin-bottom: 1.06rem;
 }
 
 .navbarButton {
   width: 34.8rem;
-  height: 6rem;
+  padding: 1rem;
   border: none;
   background: linear-gradient(92.86deg, #c9e331 -6.54%, #54a31f 96.73%);
   border-radius: 6.5rem;

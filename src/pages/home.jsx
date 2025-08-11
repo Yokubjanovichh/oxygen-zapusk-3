@@ -89,12 +89,15 @@ export default function Home() {
             <img src={camIcon} alt="camIcon" />
             <p>Online • 20:00 • 22-Avgust</p>
           </div>
-          <img className={styles.navbarTitle} src={titile} alt="titile" />
+          <h3 className={styles.navbarTitle}>
+            Chegirmali narxlarda xonadon sotib olish uchun
+          </h3>
+          {/* <img className={styles.navbarTitle} src={titile} alt="titile" /> */}
           <button
             onClick={() => setIsModalOpen(true)}
             className={styles.navbarButton}
           >
-            qatnashish
+            Bepul taqdimotda qatnashing
           </button>
           <p className={styles.navbarDesc}>
             22-avgust, soat 20:00 da Telegram kanalda jonli efir, qolib ketmang
