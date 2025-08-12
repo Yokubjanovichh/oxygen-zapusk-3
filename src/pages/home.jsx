@@ -93,6 +93,7 @@ export default function Home() {
           </h3>
           <button
             onClick={() => {
+              console.log("Button bosildi");
               setIsModalOpen(true);
 
               if (typeof fbq !== "undefined") {
