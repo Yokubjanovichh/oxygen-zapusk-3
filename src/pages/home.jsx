@@ -92,11 +92,21 @@ export default function Home() {
             Chegirmali narxlarda xonadon sotib olish uchun
           </h3>
           <button
-            onClick={() => setIsModalOpen(true)}
+            onClick={() => {
+              setIsModalOpen(true);
+
+              if (typeof fbq !== "undefined") {
+                fbq("trackCustom", "OpenModalButtonClicked", {
+                  buttonText: "Bepul taqdimotda qatnashing",
+                  page: window.location.pathname,
+                });
+              }
+            }}
             className={styles.navbarButton}
           >
             Bepul taqdimotda qatnashing
           </button>
+
           <p className={styles.navbarDesc}>
             22-avgust, soat 20:00 da Telegram kanalda jonli efir, qolib ketmang
           </p>
