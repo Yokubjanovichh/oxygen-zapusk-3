@@ -93,15 +93,7 @@ export default function Home() {
           </h3>
           <button
             onClick={() => {
-              console.log("Button bosildi");
               setIsModalOpen(true);
-
-              if (typeof fbq !== "undefined") {
-                fbq("trackCustom", "OpenModalButtonClicked", {
-                  buttonText: "Bepul taqdimotda qatnashing",
-                  page: window.location.pathname,
-                });
-              }
             }}
             className={styles.navbarButton}
           >
