@@ -24,22 +24,19 @@ export default function Home() {
     e.preventDefault();
     setIsLoading(true);
 
-    // Telefon raqamni tozalash (faqat raqamlar qoldiriladi)
     const cleanedNumber = number.replace(/\D/g, "");
 
-    // Tez feedback
     navigate("/last");
     setNumber("");
     setName("");
     setIsLoading(false);
 
-    // Sheets’ga ma'lumotni sendBeacon bilan yuborish
     const url =
       "https://script.google.com/macros/s/AKfycby-YD2ueEEC8rbzLLHS5x3zUhEg1MIM8jzEjFbOYBeAztQbrklaps5wyDpZCohxkK3j6A/exec";
 
     const formData = new URLSearchParams();
     formData.append("Name", name);
-    formData.append("Email", cleanedNumber); // tozalangan raqam yuboriladi
+    formData.append("Email", cleanedNumber);
 
     navigator.sendBeacon(url, formData);
   };
