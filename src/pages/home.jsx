@@ -86,7 +86,7 @@ export default function Home() {
             <p>Online • 20:00 • 22-Avgust</p>
           </div>
           <h3 className={styles.navbarTitle}>
-            Chegirmali narxlarda xonadon sotib olish uchun
+            Chegirmali Xonadonlar narxini bilish uchun
           </h3>
           <button
             onClick={() => {
